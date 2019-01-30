@@ -1305,6 +1305,10 @@ class CredentialInputSource(PrimordialModel):
 
         return backend(**backend_kwargs)
 
+    def get_absolute_url(self, request=None):
+        view_name = 'api:credential_input_source_detail'
+        return reverse(view_name, kwargs={'pk': self.pk}, request=request)
+
 
 for plugin in credential_plugins:
     CredentialType.load_plugin(plugin)
